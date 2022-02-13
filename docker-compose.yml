@@ -1,0 +1,28 @@
+version: '2.1'
+services:
+  tinyrss:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TTRSS_DB_TYPE: 'mysql'
+      TTRSS_DB_HOST: 'mariadb'
+      TTRSS_DB_USER: 'root'
+      TTRSS_DB_NAME: 'tinyrss'
+      TTRSS_DB_PASS: 'tinyrss'
+      TTRSS_DB_PORT: '3306'
+      TTRSS_SELF_URL_PATH: 'http://localhost:8080/'
+    ports:
+    - 8080:80
+    volumes:
+    - /etc/localtime:/etc/localtime
+    depends_on:
+    - mariadb
+      
+  mariadb:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: tinyrss
+      MARIADB_DATABASE: tinyrss
