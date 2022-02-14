@@ -51,13 +51,14 @@ RUN mkdir -p /app/www/tt-rss /tmp/ttrss-feedly-theme && \
     rm /tmp/ttrss-feedly-theme.tar.gz && \
     rm /tmp/ttrss.tar.gz && \
     rm -rf /tmp/ttrss-feedly-theme
-    
+
 ADD files/ /
 RUN adduser -D abc && \
     chmod +x /etc/s6-overlay/s6-rc.d/**/* /app/user-setup.sh && \
     sed -i "s#;error_log = log/php8/error.log.*#error_log = /app/log/php/error.log#g" /etc/php8/php-fpm.conf && \
     sed -i "s#user = nobody.*#user = abc#g" /etc/php8/php-fpm.d/www.conf && \
-    sed -i "s#group = nobody.*#group = abc#g" /etc/php8/php-fpm.d/www.conf
+    sed -i "s#group = nobody.*#group = abc#g" /etc/php8/php-fpm.d/www.conf && \
+    ln -sf /usr/bin/php8 /usr/bin/php
 
 ENTRYPOINT ["/init"]
 
@@ -67,9 +68,9 @@ ENV S6_KEEP_ENV=1 \
     TTRSS_SINGLE_USER_MODE=true \
     TTRSS_SIMPLE_UPDATE_MODE=false \
     TTRSS_PHP_EXECUTABLE=/usr/bin/php \
-    TTRSS_LOCK_DIRECTORY=lock \
-    TTRSS_CACHE_DIR=cache \
-    TTRSS_ICONS_DIR=feed-icons \
+    TTRSS_LOCK_DIRECTORY=/app/www/tt-rss/lock \
+    TTRSS_CACHE_DIR=/app/www/tt-rss/cache \
+    TTRSS_ICONS_DIR=/app/www/tt-rss/feed-icons \
     TTRSS_ICONS_URL=feed-icons \
     TTRSS_AUTH_AUTO_CREATE=true \
     TTRSS_AUTH_AUTO_LOGIN=true \
