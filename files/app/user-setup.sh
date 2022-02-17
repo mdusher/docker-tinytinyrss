@@ -39,15 +39,19 @@ chown abc:abc /app
 chown -R abc:abc \
         /var/lib/nginx \
         /var/tmp/nginx \
-        /app/www 
+        /app/www
 chmod -R g+w \
         /app/nginx \
         /app/www \
-        /app/log
+        /app/lo
+
+if [ "${TTRSS_HTTPD_SUBPATH}" != "" ]; then
+    ln -sf /app/www/tt-rss "/app/www/tt-rss/${TTRSS_HTTPD_SUBPATH}"
+fi
 
 if [ "${TTRSS_DB_TYPE}" = "mysql" ]; then
     echo "waiting for mariadb..."
-    while ! nc -z ${TTRSS_DB_HOST} ${TTRSS_DB_PORT}; do   
+    while ! nc -z ${TTRSS_DB_HOST} ${TTRSS_DB_PORT}; do
         sleep 1
     done
 
