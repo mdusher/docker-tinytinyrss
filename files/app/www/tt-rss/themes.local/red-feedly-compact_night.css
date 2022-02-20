@@ -1,0 +1,104 @@
+@import url(../lib/flat-ttrss/flat_combined_dark.css);
+@import url(feedly-compact_night.css);
+
+body.ttrss_main #main {
+  //background-color: #1F1F23 !important;
+  background-color: #1B1B1E !important;
+}
+
+#content-wrap#content-wrap .cdm[data-article-id], #content-wrap#content-wrap .hl {
+  background-color: #1F1F23;
+}
+
+#feeds-holder#feeds-holder #feedTree .dijitTreeRow {
+  color: #e1e1e1;
+}
+
+#feeds-holder#feeds-holder #feedTree .dijitTreeExpando, #feeds-holder#feeds-holder #feedTree .icon.material-icons:not(.icon-label) {
+  color: #cd5c5c;
+}
+
+#feeds-holder#feeds-holder #feedTree .counterNode {
+    color: #e1e1e1;
+}
+
+body.ttrss_main {
+    background-color: #fff;
+}
+
+i.material-icons, .flat .dijitTab i.material-icons {
+    color: #cd5c5c;
+}
+
+.flat .dijitTabContainerTop-tabs .dijitTabChecked:before {
+    background: #cd5c5c;
+}
+
+.flat .dijitMenuItemSelected,
+.flat .dijitMenuItemSelected td {
+    background-color: #cd5c5c;
+}
+
+.dijitTab .tabLabel {
+  color: #e1e1e1;
+}
+
+body.ttrss_main #headlines-frame #headlines-spacer a:hover {
+  color: #cd5c5c;
+}
+
+.flat .dijitAccordionInnerContainerSelected .dijitAccordionTitle {
+  background-color: #cd5c5c;
+}
+
+.flat .dijitAccordionInnerContainer:not(.dijitSelected) i.material-icons, .flat .dijitTab i.material-icons {
+  color: #cd5c5c;
+}
+
+body.ttrss_main a {
+  color: #cd5c5c;
+  text-decoration: none;
+}
+
+#content-wrap#content-wrap #headlines-frame, #content-wrap#content-wrap #toolbar {
+  background-color: #1F1F23;
+}
+
+#content-wrap#content-wrap #headlines-spacer::after {
+  background-color: #1F1F23;
+}
+.flat .dijitMenu .dijitMenuItem.dijitDisabled:not(.dijitMenuItemSelected) .dijitMenuItemLabel,
+body.flat.ttrss_main #headlines-frame .cdm.expandable.active .title, body.flat.ttrss_main #headlines-frame .cdm.expanded.active .title {
+  color: #cd5c5c;
+}
+
+.flat .dijitMenuItemDisabled.dijitMenuItemSelected td, .flat .dijitMenuItemDisabled.dijitMenuItemSelected {
+  background: #cd5c5c;
+}
+
+body.ttrss_main #toolbar-frame #toolbar #selected_prompt {
+  color: #cd5c5c;
+}
+
+.flat .dijitButton.alt-primary .dijitButtonNode, .flat .dijitDropDownButton.alt-primary .dijitButtonNode, .flat .dijitComboButton.alt-primary .dijitButtonNode, .flat .dijitToggleButton.alt-primary .dijitButtonNode, .flat .dijitComboBox.alt-primary .dijitButtonNode, .flat .dijitSelect.alt-primary .dijitButtonContents, .flat .dijitSelect.alt-primary .dijitButtonNode, .flat .dijitSpinner.alt-primary .dijitArrowButton {
+  background: #121212;
+  color: #e1e1e1;
+  border-color: #121212;
+}
+
+.flat .dijitButton.alt-info .dijitButtonNode, .flat .dijitDropDownButton.alt-info .dijitButtonNode, .flat .dijitComboButton.alt-info .dijitButtonNode, .flat .dijitToggleButton.alt-info .dijitButtonNode, .flat .dijitComboBox.alt-info .dijitButtonNode, .flat .dijitSelect.alt-info .dijitButtonContents, .flat .dijitSelect.alt-info .dijitButtonNode, .flat .dijitSpinner.alt-info .dijitArrowButton,
+.flat .dijitButton.alt-success .dijitButtonNode, .flat .dijitDropDownButton.alt-success .dijitButtonNode, .flat .dijitComboButton.alt-success .dijitButtonNode, .flat .dijitToggleButton.alt-success .dijitButtonNode, .flat .dijitComboBox.alt-success .dijitButtonNode, .flat .dijitSelect.alt-success .dijitButtonContents, .flat .dijitSelect.alt-success .dijitButtonNode, .flat .dijitSpinner.alt-success .dijitArrowButton,
+.flat .dijitButton .dijitButtonNode, .flat .dijitDropDownButton .dijitButtonNode, .flat .dijitComboButton .dijitButtonNode, .flat .dijitToggleButton .dijitButtonNode {
+  border-color: #121212;
+  background: #121212;
+}
+
+.flat .dijitCheckBox.dijitCheckBoxChecked {
+  background-color: #cd5c5c;
+  border-color: #cd5c5c;
+}
+
+::selection {
+  background: #cd5c5c;
+}
+

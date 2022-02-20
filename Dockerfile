@@ -47,7 +47,7 @@ ADD https://github.com/levito/tt-rss-feedly-theme/archive/refs/tags/v2.9.1.tar.g
 RUN mkdir -p /app/www/tt-rss /tmp/ttrss-feedly-theme && \
     tar xf /tmp/ttrss.tar.gz -C /app/www/tt-rss --strip-components=1 && \
     tar xf /tmp/ttrss-feedly-theme.tar.gz -C /tmp/ttrss-feedly-theme --strip-components=1 && \
-    cp -r /tmp/ttrss-feedly-theme/feedly* /app/www/tt-rss/themes/ && \
+    cp -r /tmp/ttrss-feedly-theme/feedly* /app/www/tt-rss/themes.local/ && \
     rm /tmp/ttrss-feedly-theme.tar.gz && \
     rm /tmp/ttrss.tar.gz && \
     rm -rf /tmp/ttrss-feedly-theme
