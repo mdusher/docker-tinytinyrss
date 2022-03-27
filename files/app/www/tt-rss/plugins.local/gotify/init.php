@@ -100,7 +100,7 @@ class gotify extends Plugin {
                 curl_setopt($curl, CURLOPT_POST, true);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payload));
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+                curl_setopt($curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json", "X-Gotify-Key: $key"]);
                 $result = curl_exec($curl);
                 curl_close($curl);
         }
