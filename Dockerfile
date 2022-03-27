@@ -14,13 +14,14 @@ RUN tar -C / -Jxpf /tmp/s6-overlay-noarch-${S6_OVERLAY_VERSION}.tar.xz && \
 RUN apk add --no-cache \
     bash \
     curl \
+    git \
     nginx \
     openssl \
     shadow \
     sudo \
     php8 \
     php8-fpm \
-	php8-curl \
+    php8-curl \
     php8-pdo \
     php8-gd \
     php8-intl \
@@ -36,20 +37,28 @@ RUN apk add --no-cache \
     php8-json \
     php8-iconv \
     php8-pcntl \
+    php8-phar \
     php8-posix \
     php8-zip \
     php8-exif \
-    php8-openssl
+    php8-openssl \
+ && ln -sf $(which php8) /usr/bin/php
 
 # Add tt-rss from master and the feedly theme
-ADD https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz /tmp/ttrss.tar.gz
+ADD https://getcomposer.org/download/latest-2.2.x/composer.phar /usr/local/bin/composer.phar
+RUN git clone --depth 1 https://git.tt-rss.org/fox/tt-rss.git/ /app/www/tt-rss && \
+    chmod +x /usr/local/bin/composer.phar && \
+    cd /app/www/tt-rss && \
+    # Remove the php 7 requirement
+    sed -i 's/"php": "^7"/"php": "^8"/g' composer.lock && \
+    composer.phar install --no-dev
+
+
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/refs/tags/v2.9.1.tar.gz /tmp/ttrss-feedly-theme.tar.gz
 RUN mkdir -p /app/www/tt-rss /tmp/ttrss-feedly-theme && \
-    tar xf /tmp/ttrss.tar.gz -C /app/www/tt-rss --strip-components=1 && \
     tar xf /tmp/ttrss-feedly-theme.tar.gz -C /tmp/ttrss-feedly-theme --strip-components=1 && \
     cp -r /tmp/ttrss-feedly-theme/feedly* /app/www/tt-rss/themes.local/ && \
     rm /tmp/ttrss-feedly-theme.tar.gz && \
-    rm /tmp/ttrss.tar.gz && \
     rm -rf /tmp/ttrss-feedly-theme
 
 ADD files/ /
