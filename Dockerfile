@@ -42,6 +42,7 @@ RUN apk add --no-cache \
     php8-zip \
     php8-exif \
     php8-openssl \
+    php8-ctype \
  && ln -sf $(which php8) /usr/bin/php
 
 # Add tt-rss from master and the feedly theme
